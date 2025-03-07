@@ -5,12 +5,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#ffc727",
+        primary: "#008083",
         secondary: {
-          100: "#E2E2D5",
-          200: "#888883",
+          100: "#249A90",
+          200: "#4DB39C"
         },
         dark: "#111111",
+      },
+      fontFamily: {
+        philosopher: ['Philosopher', 'sans-serif'],
+        playfair: ['"Playfair Display"', 'serif'],
       },
       container: {
         center: true,

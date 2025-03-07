@@ -1,69 +1,92 @@
 import React from "react";
+import Slider from "react-slick";
 
 const testimonialData = [
   {
-    name: "Dilshad",
-    image: "",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    name: "Ramesh Pindoriya",
+    description:
+      "Working with Kartik Mashar was an incredible experience! They took the time to understand my unique business needs and provided clear guidance on the best loan options available. The process was smooth and efficient, and I was impressed by their professionalism and knowledge. I especially appreciated how Kartik was always available to answer my questions throughout the business loan process. I highly recommend V3 Finance to anyone looking for personalized and reliable service.",
     aosDelay: "0",
   },
   {
-    name: "Satya",
-    image: "",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    name: "Beshoy Mekheel",
+    description:
+      "Kartik is a perfect example for the successful business broker, very understanding the situations of small businesses, perfect communication, always in time, and whatever he promises he achieved Honestly couldn’t ask for more Highly recommended 👍👍👍",
     aosDelay: "300",
   },
   {
-    name: "Sabir",
-    image: "",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-    aosDelay: "1000",
+    name: "Madelaine Karatli",
+    description:
+      "I had an excellent experience working with Kartik as my finance broker. He went above and beyond to help me secure a business loan with an affordable rate. Kartik's expertise and dedication were evident throughout the entire process. He was proactive in finding the best options tailored to my needs and ensured a smooth approval process. I greatly appreciate his professionalism and commitment to providing quality service. If you're looking for a finance broker who delivers results with affordability in mind, I highly recommend Kartik 👍",
+    aosDelay: "600",
+  },
+  {
+    name: "Jigar Shah",
+    description:
+      "Can not rate V3 enough to anyone and everyone.  We run a small business where they guided us every single step in the process with clarity( be it business finance or mortgage).   We got couple of approvals in less than 24 hours where our previous financial planner took more than 6 or sometime 8 weeks to get results.  Super quick and transparent service.  Also our office staff is equally happy to work with V3 finance team with similar work.  Keep up the good work team…",
+    aosDelay: "900",
   },
 ];
-const Testimonial = () => {
-  return (
-    <>
-      <span id="about"></span>
-      <div className="dark:bg-black dark:text-white py-14 sm:pb-24">
-        <div className="container">
-          {/* Header */}
-          <div className="space-y-4 pb-12">
-            <p
-              data-aos="fade-up"
-              className="text-3xl font-semibold text-center sm:text-4xl font-serif"
-            >
-              What Our Clients Say About Us
-            </p>
-            <p data-aos="fade-up" className="text-center sm:px-44">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Perferendis iure consectetur tempora amet.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-black dark:text-white">
-            {testimonialData.map((skill) => (
-              <div
-                key={skill.name}
-                data-aos="fade-up"
-                data-aos-delay={skill.aosDelay}
-                className="card text-center group space-y-3 sm:space-y-6 p-4 sm:py-12 dark:bg-white/20 bg-gray-100 duration-300  rounded-lg "
-              >
-                <div className="grid place-items-center ">
-                  <img
-                    src="https://picsum.photos/200"
-                    alt=""
-                    className="rounded-full w-20 h-20"
-                  />
-                </div>
-                <div className="text-2xl">⭐⭐⭐⭐⭐</div>
-                <p>{skill.description}</p>
-                <p className="text-center font-semibold">{skill.name}</p>
-              </div>
-            ))}
-          </div>
+const Testimonial = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    autoplaySpeed: 5000, 
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+  };
+
+  return (
+    <div className="dark:bg-gray-900 dark:text-white py-14 sm:pb-24">
+      <div className="container mx-auto lg:w-[50%] px-6 lg:px-12">
+        <div className="space-y-4 pb-12 text-center">
+          <h2
+            data-aos="fade-up"
+            className="text-4xl font-bold font-philosopher text-primary dark:text-teal-300 "
+          >
+            What Our Clients Say About Us
+          </h2>
+          <p
+            data-aos="fade-up"
+            className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+          >
+            Discover the impact we’ve made on our clients. Their stories speak
+            volumes about our commitment to excellence and satisfaction.
+          </p>
         </div>
+
+        <Slider {...settings} className="w-full">
+          {testimonialData.map((testimonial, index) => (
+            <div
+              key={index}
+              data-aos="fade-up"
+              data-aos-delay={testimonial.aosDelay}
+              className="card p-6  dark:bg-gray-800 bg-white  border-4 border-primary transform transition-all duration-300 rounded-xl"
+            >
+              <div className="flex justify-center mb-4">
+                <div className="w-20 h-20 rounded-full  bg-gradient-to-r from-secondary-200 via-secondary-100 to-primary flex items-center justify-center">
+                  <span className="text-white text-3xl font-semibold uppercase">
+                    {testimonial.name.split(' ').map(word => word[0]).join('')}
+                  </span>
+                </div>
+              </div>
+
+              <div className="text-xl text-yellow-400 mb-3">⭐⭐⭐⭐⭐</div>
+              <p className="text-gray-700 dark:text-gray-300 italic mb-4">
+                "{testimonial.description}"
+              </p>
+              <p className="font-semibold text-lg text-primary dark:text-teal-300">
+                {testimonial.name}
+              </p>
+            </div>
+          ))}
+        </Slider>
       </div>
-    </>
+    </div>
   );
 };
 
